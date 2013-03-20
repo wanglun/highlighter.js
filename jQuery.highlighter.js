@@ -166,8 +166,15 @@
                     } else if (document.selection && document.selection.createRange) {
                         range = document.selection.createRange();
                         expandedSelRange = range.duplicate();
+
+			if (expandedSelRange.text.length == 0) {
+			    $(settings.selector).hide();
+			    return;
+			}
+
                         range.collapse(false);
                         range.pasteHTML(html);
+
                         expandedSelRange.setEndPoint("EndToEnd", range);
                         expandedSelRange.select();
                         position = $(".dummy").offset();
