@@ -54,7 +54,7 @@ $('.article').highlighter({
 Where ```selector``` is the jQuery selector string of the element that you want to show upon text being selected, and ```minWords``` is the minimum number of words that have
 to be selected in order for the tooltip to appear. The defaults are ```'.highlighter-container'```, and ```0```, respectively.
 
-Complete is a callback function that executes after the tooltip shows and data is a string that is the text selected
+And ```complete``` is a callback function that executes after the tooltip shows and ```data``` is a string that is the text selected
 
 
 Compatibility
