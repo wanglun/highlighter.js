@@ -76,6 +76,11 @@ Authors
 
 - Matthew Conlen, matt.conlen@huffingtonpost.com
 
+Contributors
+-----
+
+- GYatesIII, https://github.com/GYatesIII
+
 License
 -----
 Copyright © 2012 Huffington Post Labs.
