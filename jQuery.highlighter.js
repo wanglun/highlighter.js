@@ -81,12 +81,14 @@
             var settings = $.extend({
                 'selector': '.highlighter-container',
                 'minWords': 0,
-                'textVariable': null
+		'complete': function() {}
             }, options);
             var numClicks = 0;
             var topOffset = 0;
             var leftOffset = 0;
             var isDown = false;
+
+	    var selText;
 
             return this.each(function () {
                 /*
@@ -107,11 +109,8 @@
                     if (window.getSelection) {
                         sel = window.getSelection();
                         selText = sel.toString();
-                        if ($.trim(selText) === '' || selText.split(' ').length < settings.minWords) return;
 
-                        if(settings.textVariable) {
-                            window[settings.textVariable] = selText;
-                        }
+                        if ($.trim(selText) === '' || selText.split(' ').length < settings.minWords) return;
 
                         if (sel.getRangeAt && sel.rangeCount) {
                             range = window.getSelection().getRangeAt(0);
@@ -163,8 +162,13 @@
                     } else if (document.selection && document.selection.createRange) {
                         range = document.selection.createRange();
                         expandedSelRange = range.duplicate();
+
+			selText = expandedSelRange.text;
+			if ($.trim(selText) === '' || selText.split(' ').length < settings.minWords) return;
+
                         range.collapse(false);
                         range.pasteHTML(html);
+
                         expandedSelRange.setEndPoint("EndToEnd", range);
                         expandedSelRange.select();
                         position = $(".dummy").offset();
@@ -173,7 +177,9 @@
 
                     $(settings.selector).css("top", position.top + topOffset + "px");
                     $(settings.selector).css("left", position.left + leftOffset + "px");
-                    $(settings.selector).show();
+                    $(settings.selector).show(400, function() {
+			window[settings.complete(selText)];
+		    });
                 }
                 $(settings.selector).hide();
                 $(settings.selector).css("position", "absolute");
