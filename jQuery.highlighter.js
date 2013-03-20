@@ -81,14 +81,14 @@
             var settings = $.extend({
                 'selector': '.highlighter-container',
                 'minWords': 0,
-		'complete': function() {}
+                'complete': function() {}
             }, options);
             var numClicks = 0;
             var topOffset = 0;
             var leftOffset = 0;
             var isDown = false;
 
-	    var selText;
+        var selText;
 
             return this.each(function () {
                 /*
@@ -163,8 +163,8 @@
                         range = document.selection.createRange();
                         expandedSelRange = range.duplicate();
 
-			selText = expandedSelRange.text;
-			if ($.trim(selText) === '' || selText.split(' ').length < settings.minWords) return;
+                        selText = expandedSelRange.text;
+                        if ($.trim(selText) === '' || selText.split(' ').length < settings.minWords) return;
 
                         range.collapse(false);
                         range.pasteHTML(html);
@@ -177,9 +177,9 @@
 
                     $(settings.selector).css("top", position.top + topOffset + "px");
                     $(settings.selector).css("left", position.left + leftOffset + "px");
-                    $(settings.selector).show(400, function() {
-			window[settings.complete(selText)];
-		    });
+                    $(settings.selector).show(300, function() {
+                        settings.complete(selText);
+                    });
                 }
                 $(settings.selector).hide();
                 $(settings.selector).css("position", "absolute");
