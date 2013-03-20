@@ -175,6 +175,10 @@
                         range.collapse(false);
                         range.pasteHTML(html);
 
+                        if(settings.textVariable) {
+                            window[settings.textVariable] = expandedSelRange.text;
+                        }
+
                         expandedSelRange.setEndPoint("EndToEnd", range);
                         expandedSelRange.select();
                         position = $(".dummy").offset();
