@@ -47,7 +47,7 @@ On init you can pass in a settings object that will recognize two parameters:
 $('.article').highlighter({
                            'selector': '.highlighter-container',
                            'minWords': 0,
-			   'complete': function (data) { }
+                           'complete': function (data) { }
 });
 ```
 
