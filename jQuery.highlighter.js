@@ -46,7 +46,7 @@
                 event.type = "tripleclick";
 
                 // let jQuery handle the triggering of "tripleclick" event handlers
-                jQuery.event.handle.apply(this, arguments);
+                jQuery.event.dispatch.apply(this, arguments);
             }
             $elem.data('clicks', clicks);
         }
