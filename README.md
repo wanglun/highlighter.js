@@ -69,6 +69,7 @@ Sightings in the Wild
 If you use this project in a production project, please contact the authors or submit a pull request on this list! We like to know other people find our work helpful.
 
 * http://www.newrepublic.com/
+* http://www.slate.com/
 
 
 Authors
