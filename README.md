@@ -75,7 +75,7 @@ If you use this project in a production project, please contact the authors or s
 Authors
 -----
 
-- Matthew Conlen, matt.conlen@huffingtonpost.com
+- Matthew Conlen, mc@mathisonian.com
 
 Contributors
 -----
