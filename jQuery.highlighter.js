@@ -81,7 +81,8 @@
             var settings = $.extend({
                 'selector': '.highlighter-container',
                 'minWords': 0,
-                'complete': function() {}
+                'complete': function() {},
+                'enter': function() {return true;}
             }, options);
             var numClicks = 0;
             var topOffset = 0;
@@ -110,7 +111,7 @@
                         sel = window.getSelection();
                         selText = sel.toString();
 
-                        if ($.trim(selText) === '' || selText.split(' ').length < settings.minWords) return;
+                        if ($.trim(selText) === '' || selText.split(' ').length < settings.minWords || !settings.enter(selText)) return;
 
                         if (sel.getRangeAt && sel.rangeCount) {
                             range = window.getSelection().getRangeAt(0);
@@ -164,7 +165,7 @@
                         expandedSelRange = range.duplicate();
 
                         selText = expandedSelRange.text;
-                        if ($.trim(selText) === '' || selText.split(' ').length < settings.minWords) return;
+                        if ($.trim(selText) === '' || selText.split(' ').length < settings.minWords || !settings.enter(selText)) return;
 
                         range.collapse(false);
                         range.pasteHTML(html);
